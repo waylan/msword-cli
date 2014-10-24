@@ -1,0 +1,13 @@
+*.pyc
+MANIFEST
+*.egg-info
+*.sln
+*.suo
+*.pyproj
+*.user
+msw27/*
+obj/*
+build/*
+dist/*
+tmp/*
+README.html
