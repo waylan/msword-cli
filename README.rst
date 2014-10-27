@@ -8,6 +8,8 @@ A Command Line Interface for Microsoft Word
 Summary
 =======
 
+.. default-role:: code
+
 MSWord-CLI allows you to control Microsoft Word from the command line and/or automate
 it from batch or PowerShell scripts. Among other things, you may create, open, print,
 export, save, and close Word documents. Note that MSWord-CLI does not actually edit the 
@@ -27,19 +29,19 @@ Basic Usage
 
 To open an existing document:
 
-.. code:: shell
+.. code:: bash
 
 	$ msw open mydocument.docx
 
 To print the active (focused) document:
 
-.. code:: shell
+.. code:: bash
 
 	$ msw print
 
 To view a list of all open documents:
 
-.. code:: shell
+.. code:: bash
 
 	$ msw docs
 
@@ -48,10 +50,10 @@ To view a list of all open documents:
 	* [1] mydocument.docx
 	  [2] otherdoc.docx
 
-Notice that the asterisk ("``*``") indicates that the document at index 1 (``mydocument.docx``) is the 
-currently active document. To change the focus to ``otherdoc.docx`` (at index 2):
+Notice that the asterisk ('`*`') indicates that the document at index 1 (`mydocument.docx`) is the 
+currently active document. To change the focus to `otherdoc.docx` (at index 2):
 
-.. code:: shell
+.. code:: bash
 
 	$ msw activate 2
 	$ msw docs
@@ -63,8 +65,8 @@ currently active document. To change the focus to ``otherdoc.docx`` (at index 2)
 
 Unless otherwise specified all subcommands work on the active document.  
 
-For a complete list of commands and options, run ``msw --help`` from the command line. For help
-with a specific subcommand, run ``msw <subcommand> --help``.
+For a complete list of commands and options, run `msw --help` from the command line. For help
+with a specific subcommand, run `msw <subcommand> --help`.
 
 Chaining
 --------
@@ -73,19 +75,19 @@ Subcommands can be chained together. For example, to open a document, print two 
 pages 2, 3, 4, and 6 of that document, and then close the document, the following single 
 command is all that is needed:
 
-.. code:: shell
+.. code:: bash
 
 	$ msw open somedoc.docx print --count 2 --pages "2-4, 6" close
 
 Note that if any options are specified for a subcommand, those options must be specified after
 the relevant subcommand and before the next subcommand in the chain. For instance, in the above 
-example, ``somedoc.docx`` is an argument of the ``open`` subcommand, ``--count 2 --pages "2-4, 6"`` 
-are options for the ``print`` subcommand and the ``close`` subcommand has no options or arguments 
+example, `somedoc.docx` is an argument of the `open` subcommand, `--count 2 --pages "2-4, 6"` 
+are options for the `print` subcommand and the `close` subcommand has no options or arguments 
 defined.
 
 Without command chaining, three separate commands would need to be issued:
 
-.. code:: shell
+.. code:: bash
 
 	$ msw open somedoc.docx
 	$ msw print --count 2 --pages "2-4, 6"
@@ -95,15 +97,15 @@ Either method will accomplish the same end result. However, chaining should run 
 as the utility only needs to be loaded once for all commands rather than for each command.
 
 Chaining also allows you to run different variations of the same command when that command's
-options are mutually exclusive. For example, the ``export`` subcommand can only accept either
-the ``--pdf`` or the ``--xps`` flag. If you want to export to both formats, you can chain two
+options are mutually exclusive. For example, the `export` subcommand can only accept either
+the `--pdf` or the `--xps` flag. If you want to export to both formats, you can chain two
 `export` subcommands together :
 
-.. code:: shell
+.. code:: bash
 
     $ msw export --pdf . export --xps .
 
-Note that the dot ("``.``") in the above example specifies the current working directory as the 
+Note that the dot ('`.`') in the above example specifies the current working directory as the 
 export path. All of the common command line paradigms should work out-of-the-box.
 
 Dependencies
@@ -125,6 +127,6 @@ Python Packages:
 License
 =======
 
-MSWord-CLI is licensed under the `BSD License`_ as defined in ``LICENSE.txt``.
+MSWord-CLI is licensed under the `BSD License`_ as defined in `LICENSE.txt`.
 
 .. _`BSD License`: http://opensource.org/licenses/BSD-2-Clause
