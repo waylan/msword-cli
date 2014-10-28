@@ -3,6 +3,7 @@ from win32com import client as com
 from win32com.client import constants as C
 from pywintypes import com_error
 from collections import OrderedDict
+from pkg_resources import iter_entry_points
 import click
 import os
 
@@ -404,6 +405,12 @@ def docs():
             click.echo(template.format(active, i, doc.Name, saved))
     else:
         click.echo('\nNo open documents found.')
-    
+
+
+# Get and load commands from plugins
+for plugin in iter_entry_points(group='msw.plugin'):
+    cli.add_command(plugin.load())
+
+   
 if __name__ == '__main__':
     cli()

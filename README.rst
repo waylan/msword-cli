@@ -108,6 +108,90 @@ the `--pdf` or the `--xps` flag. If you want to export to both formats, you can 
 Note that the dot ('`.`') in the above example specifies the current working directory as the 
 export path. All of the common command line paradigms should work out-of-the-box.
 
+Plugins
+-------
+
+MSWord-CLI includes support for third-party plugins. A plugin can add additional subcommands
+which can be included in a chain. For example, one might desire to have the ability to import
+some data to fill a form (perhaps content controls). While it would be unrealistic to try to
+include such a script with MSWord-CLI that could meet everyone's needs, there is no reason
+why an individual user could not develop a special purpose script to meet her specific needs.
+
+While the script could be written as a standalone script, it would also be convenient to be
+able to include the call within a chain. That way, the document could be opened, the data imported,
+and then the document could be printed and closed -- all from a single command.
+
+All commands need to be defined as `Click`_ commands. Create a new python file named `msw_import.py`
+and define your command:
+
+.. code:: python
+
+    import click
+
+    @click.command('import')
+    def imprt():
+        ''' Import data. '''
+        click.echo('Data is being imported...')
+
+Note that while the command is labeled 'import' (which will be used from the command line), the 
+function is named `imprt` so as not to clash with Python's `import` statement. Currently, the 
+new command only prints a mesage to the console and exits. Before developing the new command's 
+functionality, tell MSWord-CLI about the new subcommand and verify that it can be called. 
+To do that, create a second python file named `setup.py` and include a setup script:
+
+.. code:: python
+
+	from setuptools import setup
+
+	setup(
+	    name='MSWImportPlugin',
+	    version="1",
+	    description="Import plugin for MSWord_CLI",
+	    py_modules=['msw_import'],
+	    entry_points="""
+	        [msw.plugin]
+	        import=msw_import:imprt
+	    """
+	)
+
+The key is in the `entry_points`. An entry point was added to the `msw.plugin` group named 'import'
+which points to the `imprt` function at its path (`msw_import:imprt`). Additional commands could
+be defined from the same Python module. Simply add an additional line to the `entry_points` for 
+each one.
+
+Finally, for MSWord-CLI to find the new plugin, it needs to be installed.
+
+.. code:: bash
+
+	$ python setup.py install
+
+The above command will do the trick. However, as the plugin isn't finished yet, is would be helpful
+to use a special development mode which sets up the path to run the plugin from the source file 
+rather than Python's `site-packages` directory. That way, any changes made to the file will 
+immediately take effect with no need to reinstall the plugin.
+
+.. code:: bash
+
+	$ python setup.py develop
+
+Now that the plugin is installed, test the script:
+
+.. code:: bash
+	
+	$ msw --help
+
+You should find the `import` subcommand listed among the default subcommands in the help messge. 
+To ensure that the new subcommand works, try running it:
+
+.. code:: bash
+	
+	$ msw import
+	Data is being imported...
+
+As the message was printed to the console, the new `import` subcommand is being called. Now 
+the functionally of the `import` subcommand can be fleshed out, which is left as an exercise 
+for the reader.
+
 Dependencies
 ============
 
@@ -118,11 +202,13 @@ copy of Microsoft Word installed on your system.
 Python Packages:
 
 * PyWin32_
-* Click_ >= 3
+* Click_ (version 3)
+* Setuptools_
 
 .. _Python: http://python.org/
 .. _PyWin32: http://sf.net/projects/pywin32
 .. _Click: http://click.pocoo.org/
+.. _Setuptools: https://pypi.python.org/pypi/setuptools
 
 License
 =======
