@@ -86,7 +86,7 @@ def open(path, show):
     '''
     click.echo('Opening document at "%s"' % path)
     try:
-        Word.Documents.Open(FileName=path, Visible=show)
+        WORD.Documents.Open(FileName=path, Visible=show)
         if show and not WORD.Visible:
             # Only change state to visible if not visible
             # otherwise leave Word's visible state as-is
