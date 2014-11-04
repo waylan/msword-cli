@@ -5,6 +5,9 @@ MSWord-CLI
 A Command Line Interface for Microsoft Word
 -------------------------------------------
 
+.. contents:: Table of Contents
+   :backlinks: top
+
 Summary
 =======
 
@@ -25,7 +28,7 @@ content of any documents. That is beyond the scope of this project.
 .. _`Bug reports`: https://github.com/waylan/msword-cli/issues/new
 
 Basic Usage
------------
+===========
 
 To open an existing document:
 
