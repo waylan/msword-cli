@@ -21,6 +21,8 @@ setup(
         [console_scripts]
         msw=msword_cli:cli
     ''',
+    test_suite = 'tests',
+    tests_require =['mock'],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Environment :: Console',
