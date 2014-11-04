@@ -27,6 +27,34 @@ content of any documents. That is beyond the scope of this project.
 
 .. _`Bug reports`: https://github.com/waylan/msword-cli/issues/new
 
+Installation
+============
+
+Installing the latest development code
+--------------------------------------
+
+If you would like to use the bleeding edge, you can install directly from the the Github Repo. 
+However, be aware that this code is not guaranteed to be stable or even run. It is recommended
+that stable releases be installed instead. Proceed at your own risk.
+
+From the command line execute the following commands as an Administrator:
+
+.. code:: bash
+
+	$ git clone https://github.com/waylan/msword-cli.git
+	$ cd msword-cli
+	$ python setup.py install
+
+These instructions assume that `Git for Windows`_, `Python`_ and `Setuptools`_ are already installed 
+on your system. 
+
+.. _`Git for Windows`: http://www.git-scm.com/downloads
+
+Making the `msw` command available on your PATH
+-----------------------------------------------
+
+Todo...
+
 Basic Usage
 ===========
 
