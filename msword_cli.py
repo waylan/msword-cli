@@ -281,13 +281,14 @@ def export(path, format, show, optimize, pages, range, markup, properties, irm, 
             # No filename specified. Used document name
             name = os.path.splitext(WORD.ActiveDocument.Name)[0]
             path = os.path.join(path, name)
-        if os.path.splitext(path)[1].lower() not in ['pdf', 'xps']:
+        if os.path.splitext(path)[1].lower() not in ['.pdf', '.xps']:
             # No file extension specified. Use file format.
             if format == C.wdExportFormatPDF:
                 ext = '.pdf'
             else:
                 ext = '.xps'
             path += ext
+        click.echo('Exporting to "%s"...' % path)
         options = {
                 'OutputFileName':     path,
                 'ExportFormat':       format,

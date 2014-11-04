@@ -18,6 +18,9 @@ class MockDoc(object):
     def SaveAs(self, **kwargs):
         pass
 
+    def ExportAsFixedFormat(self, **kwargs):
+        pass
+
 class MockDocs(list):
     ''' A Document Collection. '''
     @property
