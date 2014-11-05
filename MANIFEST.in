@@ -1,6 +1,6 @@
 recursive-include tests *.py
 include msword_cli.py
-inlcude setup.py
+include setup.py
 include LICENSE.txt
 include README.rst
 
