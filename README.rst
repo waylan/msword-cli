@@ -41,9 +41,9 @@ From the command line execute the following commands as an Administrator:
 
 .. code:: bash
 
-	$ git clone https://github.com/waylan/msword-cli.git
-	$ cd msword-cli
-	$ python setup.py install
+	> git clone https://github.com/waylan/msword-cli.git
+	> cd msword-cli
+	> python setup.py install
 
 These instructions assume that `Git for Windows`_, `Python`_ and `Setuptools`_ are already installed 
 on your system. 
@@ -62,19 +62,19 @@ To open an existing document:
 
 .. code:: bash
 
-	$ msw open mydocument.docx
+	> msw open mydocument.docx
 
 To print the active (focused) document:
 
 .. code:: bash
 
-	$ msw print
+	> msw print
 
 To view a list of all open documents:
 
 .. code:: bash
 
-	$ msw docs
+	> msw docs
 
 	Open Documents:
 
@@ -86,8 +86,8 @@ currently active document. To change the focus to `otherdoc.docx` (at index 2):
 
 .. code:: bash
 
-	$ msw activate 2
-	$ msw docs
+	> msw activate 2
+	> msw docs
 
 	Open Documents:
 
@@ -108,7 +108,7 @@ command is all that is needed:
 
 .. code:: bash
 
-	$ msw open somedoc.docx print --count 2 --pages "2-4, 6" close
+	> msw open somedoc.docx print --count 2 --pages "2-4, 6" close
 
 Note that if any options are specified for a subcommand, those options must be specified after
 the relevant subcommand and before the next subcommand in the chain. For instance, in the above 
@@ -120,9 +120,9 @@ Without command chaining, three separate commands would need to be issued:
 
 .. code:: bash
 
-	$ msw open somedoc.docx
-	$ msw print --count 2 --pages "2-4, 6"
-	$ msw close
+	> msw open somedoc.docx
+	> msw print --count 2 --pages "2-4, 6"
+	> msw close
 
 Either method will accomplish the same end result. However, chaining should run a little faster
 as the utility only needs to be loaded once for all commands rather than for each command.
@@ -134,7 +134,7 @@ the `--pdf` or the `--xps` flag. If you want to export to both formats, you can 
 
 .. code:: bash
 
-    $ msw export --pdf . export --xps .
+    > msw export --pdf . export --xps .
 
 Note that the dot ('`.`') in the above example specifies the current working directory as the 
 export path. All of the common command line paradigms should work out-of-the-box.
@@ -194,7 +194,7 @@ Finally, for MSWord-CLI to find the new plugin, it needs to be installed.
 
 .. code:: bash
 
-	$ python setup.py install
+	> python setup.py install
 
 The above command will do the trick. However, as the plugin isn't finished yet, is would be helpful
 to use a special development mode which sets up the path to run the plugin from the source file 
@@ -203,20 +203,20 @@ immediately take effect with no need to reinstall the plugin.
 
 .. code:: bash
 
-	$ python setup.py develop
+	> python setup.py develop
 
 Now that the plugin is installed, test the script:
 
 .. code:: bash
 	
-	$ msw --help
+	> msw --help
 
 You should find the `import` subcommand listed among the default subcommands in the help messge. 
 To ensure that the new subcommand works, try running it:
 
 .. code:: bash
 	
-	$ msw import
+	> msw import
 	Data is being imported...
 
 As the message was printed to the console, the new `import` subcommand is being called. Now 
