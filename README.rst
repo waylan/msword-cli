@@ -53,7 +53,29 @@ on your system.
 Making the `msw` command available on your PATH
 -----------------------------------------------
 
-Todo...
+If you are using Python version 3.4 and you enabled the "Add Python.exe to Path” feature
+during installation (off by default), you can skip this section.
+
+Generaly, when running Python, or python scripts from the command line you would need to inlcude the
+full path to the script. However, with a little configuration, Windows will find your scripts
+without needing to include the full path to the script. You need to tell Windows where the Python
+executable (`python.exe`) and your scripts (`msw.exe`) can be found by inlcuding those directories
+in the `PATH` environment variable. Therefore, assuming you are using Python version 2.7, add the 
+following to the `PATH` environment variable (with no spaces):
+
+.. code::
+
+    C:\Python27\;C:\Python27\Scripts\
+
+If you are using a differant version of Python, or if you have installed Python in a non-standard 
+location, you will need to adjust those paths accordingly. See the `Python Guide`_ for more information.
+
+If you are using the `Python Launcher`_ (`py.exe`), you will not need to add the path to `python.exe` to
+the `PATH` environment variable, but you will still need to add the `Scripts` directory, which is where
+`msw.exe` gets installed.
+
+.. _`Python Guide`: http://docs.python-guide.org/en/latest/starting/install/win/
+.. _`Python Launcher`: https://docs.python.org/3/using/windows.html#python-launcher-for-windows
 
 Basic Usage
 ===========
